@@ -36,6 +36,7 @@ public class Point {
 	public Point north() {
 		int yNorth = y + 1;
 		Point newPt = new Point(x, yNorth); 
+		//if y > Floor.Width, stay at that place
 		if (y > Floor.Width) {
 			return new Point(x, y);
 		}
