@@ -59,12 +59,19 @@ public class Floor {
 	public Point getBelt() {
 		return Belt;
 	}
-	public Point getShipping_Dock1() {
-		return Shipping_Dock;
-	}
 	public Point getShipping_Dock() {
 		return Shipping_Dock;
 	}
+	public Point getRcving_Dock() {
+		return Rcving_Dock;
+	}
+	public Point getShelf_0() {
+		return Shelf_0;
+	}
+	public Point getShelf_1() {
+		return Shelf_1;
+	}
+	
 	
 	//A method that can provide the path to a robot.
 	public LinkedList<Point> getPath(Point curr, Point dest) {
