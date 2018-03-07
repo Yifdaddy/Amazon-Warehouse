@@ -36,8 +36,8 @@ public class Point {
 	public Point north() {
 		int yNorth = y + 1;
 		Point newPt = new Point(x, yNorth); 
-		//if y > Floor.Width, stay at that place
-		if (y > Floor.Width) {
+		//if yNorth > Floor.Width, stay at the old place
+		if (yNorth > Floor.Width) {
 			return new Point(x, y);
 		}
 		else {
@@ -48,7 +48,8 @@ public class Point {
 	public Point south() {
 		int ySou = y - 1;
 		Point newPt = new Point(x, ySou);
-		if (y < 0) {
+		//if ySou < 0, stay at the old place
+		if (ySou < 0) {
 			return new Point(x, y);
 		}
 		else {
@@ -59,6 +60,7 @@ public class Point {
 	public Point west() {
 		int xWest = x - 1;
 		Point newPt = new Point(xWest, y);
+		//if xWest < 0, stay at the old place
 		if (xWest < 0) {
 			return new Point(x, y);
 		}
@@ -70,6 +72,7 @@ public class Point {
 	public Point east() {
 		int xEast = x + 1;
 		Point newPt = new Point(xEast, y);
+		//if xEest > Floor.Length, stay at the old place
 		if (xEast > Floor.Length) {
 			return new Point(x, y);
 		}
