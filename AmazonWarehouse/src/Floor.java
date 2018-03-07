@@ -77,13 +77,17 @@ public class Floor {
 				// go east
 				if (x1Diff <= x2Diff) {
 					Point newPt = new Point(curLocation.east().getX(), curLocation.getY());
-					System.out.println("Go East.");
+					//update the curLocation to the new Point
+					curLocation = new Point(curLocation.east().getX(), curLocation.getY());
+					System.out.println("Go East by 1 point.");
 					path.add(newPt);
 				}
 				// go west
 				else {
 					Point newPt = new Point(curLocation.west().getX(), curLocation.getY());
-					System.out.println("Go West.");
+					//update the curLocation to the new Point
+					curLocation = new Point(curLocation.west().getX(), curLocation.getY());
+					System.out.println("Go West by 1 point.");
 					path.add(newPt);
 				}
 			}
@@ -92,12 +96,16 @@ public class Floor {
 				int y2Diff = Math.abs(dest.getY() - curLocation.south().getY()); //go south, y - 1
 				if (y1Diff <= y2Diff) {
 					Point newPt = new Point(curLocation.getX(), curLocation.north().getY());
-					System.out.println("Go North.");
+					//update the curLocation to the new Point
+					curLocation = new Point(curLocation.getX(), curLocation.north().getY());
+					System.out.println("Go North by 1 point.");
 					path.add(newPt);
 				}
 				else {
 					Point newPt = new Point(curLocation.getX(), curLocation.south().getY());
-					System.out.println("Go South.");
+					//update the curLocation to the new Point
+					curLocation = new Point(curLocation.getX(), curLocation.south().getY());
+					System.out.println("Go South by 1 point.");
 					path.add(newPt);
 				}
 			}
