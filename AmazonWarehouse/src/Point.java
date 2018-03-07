@@ -1,6 +1,7 @@
 
 /*
- * This gives the coordinates of each place
+ * This gives the coordinates of each place. 
+ * Basically print out the layout of floor
  */
 
 public class Point {
@@ -10,8 +11,22 @@ public class Point {
 		this.x = x;
 		this.y = y;
 	}
-	
 
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
 
 	public String toString() {
 		return "X is " + x + " Y is " + y;
@@ -22,7 +37,7 @@ public class Point {
 		int yNorth = y + 1;
 		Point newPt = new Point(x, yNorth); 
 		if (y > Floor.Width) {
-			return null;
+			return new Point(x, y);
 		}
 		else {
 			return newPt;
@@ -33,7 +48,7 @@ public class Point {
 		int ySou = y - 1;
 		Point newPt = new Point(x, ySou);
 		if (y < 0) {
-			return null;
+			return new Point(x, y);
 		}
 		else {
 			return newPt;
@@ -44,7 +59,7 @@ public class Point {
 		int xWest = x - 1;
 		Point newPt = new Point(xWest, y);
 		if (xWest < 0) {
-			return null;
+			return new Point(x, y);
 		}
 		else {
 			return newPt;
@@ -55,7 +70,7 @@ public class Point {
 		int xEast = x + 1;
 		Point newPt = new Point(xEast, y);
 		if (xEast > Floor.Length) {
-			return null;
+			return new Point(x, y);
 		}
 		else {
 			return newPt;
