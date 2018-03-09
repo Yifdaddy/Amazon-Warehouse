@@ -10,4 +10,9 @@ public class Item {
 		this.place = place;
 		this.Stock = Stock;
 	}
+	
+	public int stock_Count(String name) {
+		return this.Stock;
+	}
+	
 }
