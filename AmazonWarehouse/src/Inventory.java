@@ -32,6 +32,9 @@ public class Inventory {
 				i.Stock += 1000;
 				System.out.println("Restock complete!" );
 			}
+			else {
+				System.out.println("No need to restock yet.");
+			}
 		}
 	}
 	

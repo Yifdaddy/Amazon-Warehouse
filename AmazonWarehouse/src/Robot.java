@@ -11,13 +11,13 @@ import java.util.LinkedList;
  * depending on the Floor layout.
  */
 public class Robot {
-	int battery;
-	Floor floor;
-	boolean charged;
+	private int battery;
+	private Floor floor;
+	private boolean charged;
 	//Point ori_Place;
-	boolean isIdle;
-	Point current;
-	Order ord; // not implemented yet
+	private boolean isIdle;
+	private Point current;
+	private Order ord; // not implemented yet
 	Point next;  //the next point where the robot goes to
 	LinkedList<Point> path = new LinkedList<Point>();
 
@@ -50,22 +50,28 @@ public class Robot {
 			System.out.println("Robot needs to get charged, the current battert is " + battery);
 			isIdle = false;
 			this.path = floor.getPath(current, floor.getCharging_Station());
-			goTo(path);
+			goTo(this.path);
 			reCharge();
 		}
 		// Order shows up
+		else if (ord.order_Showup() == true) {
+			System.out.println("Order shows up...");
+			isIdle = false;
+			this.path = floor.getPath(current, ord.find_Shelf());
+			goTo(this.path);
+		}
 	}
 	
 	
 	// point next is popped out of the path, so the we update current to next to show the robot is moving.
 	public void goTo(LinkedList<Point> path) {
-		this.path = path;
+		//this.path = path;
 		for (int i = 0; i < path.size(); i++) {
 			this.next = path.pop();
+			System.out.println("Current point is " + current.getX() + current.getY());
 			current = next;
 			battery_Use();
 			System.out.println("Robot is moving to " + next.getX() + next.getY());
-			System.out.println("Current point is " + current.getX() + current.getY());
 
 		}
 	}
