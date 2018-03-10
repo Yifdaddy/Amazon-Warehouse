@@ -9,8 +9,7 @@ import java.lang.reflect.Array;
 public class Inventory {
 	public Item[] item_arr;
 	Floor floor;
-	public Inventory(Floor floor) {
-		this.floor = floor;
+	public Inventory() {
 		item_arr = new Item[] {new Item("Coke", 1, Floor.Shelf_0, 9999),
 					 	new Item("Coffee", 2, Floor.Shelf_0, 8999),
 					 	new Item("Candy", 3, Floor.Shelf_0, 10000),
@@ -32,10 +31,9 @@ public class Inventory {
 				i.Stock += 1000;
 				System.out.println("Restock complete!" );
 			}
-			else {
-				System.out.println("No need to restock yet.");
-			}
 		}
+		System.out.println("No need to restock yet.");
+
 	}
 	
 	

@@ -14,133 +14,136 @@ import java.util.LinkedList;
  */
 public class Order {
 	private int random;
-	private Inventory inventory;
 	private Floor floor;
-	LinkedList<Item> order_queue;
-	Robot robot;
+	private Inventory inventory;
+	private Item item;
+	LinkedList<Item> order_queue = new LinkedList<Item>();
+	private Robot robot;
 	private boolean order_showup;
 	private Point shelf;
-	public Order(Point pt) {
-		pt = floor.getPicker();
+	public Order(Inventory inventory, Floor floor) {
+		this.inventory = inventory;
+		this.floor = floor;
 	}
 	
 	/*
 	 * (int)(Math.random() * 20) create chances that might not have orders,
 	 * since num is 0-9 inclusive.
 	 */
-	private int random_number() {
+	public int random_number() {
 		random = (int)(Math.random() * 20);
+		System.out.println("random number is " + random);
 		return random;
 		
 	}
 	
 	//use random_number method(above) to produce a ramdom order(below)
 	public void make_Order() {
-		Item item;
+		//Item item;
+		int rand = random_number();
 		if (random > 10) {
 			order_showup = false;
 			System.out.println("No order comes up yet...");
 		}
-		if (random_number() == 0) {
+		if (rand == 0) {
 			order_showup = true;
 			item = inventory.item_arr[0];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[0].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 1) {
+		else if (rand == 1) {
 			order_showup = true;
 			item = inventory.item_arr[1];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[1].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 2) {
+		else if (rand == 2) {
 			order_showup = true;
 			item = inventory.item_arr[3];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[3].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 3) {
+		else if (rand == 3) {
 			order_showup = true;
 			item = inventory.item_arr[2];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[2].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 4) {
+		else if (rand == 4) {
 			order_showup = true;
 			item = inventory.item_arr[4];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[4].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 5) {
+		else if (rand == 5) {
 			order_showup = true;
 			item = inventory.item_arr[5];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[5].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 6) {
+		else if (rand == 6) {
 			order_showup = true;
 			item = inventory.item_arr[6];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[6].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 7) {
+		else if (rand == 7) {
 			order_showup = true;
 			item = inventory.item_arr[7];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[7].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 8) {
+		else if (rand == 8) {
 			order_showup = true;
 			item = inventory.item_arr[8];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[8].Stock--;
 			inventory.stock_Warning();
 		}
-		else if (random_number() == 9) {
+		else if (rand == 9) {
 			order_showup = true;
 			item = inventory.item_arr[9];
 			shelf = item.place;
-			System.out.println("Order shows up at " + item.place);
+			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[9].Stock--;
 			inventory.stock_Warning();
 		}
-		
 	}
 	
 	// Robot will use this method to detect which shelf should it go.
 	public boolean order_Showup() {
 		make_Order();
-		return order_showup;
+		return this.order_showup;
 	}
 	
 	public Point find_Shelf() {
-		return shelf;
+		return this.shelf;
 	}
 }
