@@ -67,6 +67,7 @@ public class Robot extends Thread{
 			goTo(this.path);
 			this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
 			goTo(this.path);
+			System.out.println("Order is shipped!");
 		}
 	}
 	
