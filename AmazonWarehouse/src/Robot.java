@@ -12,7 +12,7 @@ import java.util.LinkedList;
  */
 public class Robot extends Thread{
 	private int battery;
-	private Floor floor = new Floor();;
+	private Floor floor = new Floor();
 	private boolean charged;
 	//Point ori_Place;
 	private boolean isIdle;
@@ -30,7 +30,7 @@ public class Robot extends Thread{
 	}
 	
 	public void battery_Use() {
-		while (isIdle == false) {
+		if (isIdle == false) {
 			battery--;
 		}
 	}
@@ -42,6 +42,7 @@ public class Robot extends Thread{
 	public void reCharge() {
 		battery = 1000;
 		charged = true;
+		isIdle = true;
 		System.out.println("Arrived at Charging Station...");
 		System.out.println("Recharged, the battery now is " + battery);
 	}
@@ -60,22 +61,28 @@ public class Robot extends Thread{
 			System.out.println("Order shows up...");
 			isIdle = false;
 			this.path = floor.getPath(current, ord.find_Shelf());
+			//System.out.println("Path " + path);
+			//System.out.println("Path size " + path.size());
+
 			goTo(this.path);
 			this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
+			goTo(this.path);
 		}
 	}
 	
 	
 	// point next is popped out of the path, so the we update current to next to show the robot is moving.
 	public void goTo(LinkedList<Point> path) {
-		//this.path = path;
-		for (int i = 0; i < path.size(); i++) {
-			this.next = path.pop();
-			System.out.println("Current point is " + current.getX() + current.getY());
-			current = next;
+		for (Point i : path) {
+			//System.out.println("Path " + path);
+			//System.out.println("Path size " + path.size());
+			//System.out.println("i is " + i);
+			this.next = i;
+			this.current = next;
+			System.out.println("Current point is " + "(" + this.current.getX() + ", " + this.current.getY() + ")");
+			
 			battery_Use();
-			System.out.println("Robot is moving to " + next.getX() + next.getY());
-
+			System.out.println("Robot is moving to " + "(" + next.getX() + ", " + next.getY() + ")");
 		}
 	}
 

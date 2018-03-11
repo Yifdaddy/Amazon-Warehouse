@@ -29,7 +29,7 @@ public class Point {
 	}
 
 	public String toString() {
-		return "X is " + x + " Y is " + y;
+		return "X is " + x + " Y is " + y + "\n" ;
 	}
 	
 	

@@ -88,7 +88,7 @@ public class Floor {
 					Point newPt = new Point(curLocation.east().getX(), curLocation.getY());
 					//update the curLocation to the new Point
 					curLocation = new Point(curLocation.east().getX(), curLocation.getY());
-					System.out.println("Go East by 1 point.");
+					//System.out.println("Go East by 1 point.");
 					path.add(newPt);
 				}
 				// go west
@@ -96,29 +96,30 @@ public class Floor {
 					Point newPt = new Point(curLocation.west().getX(), curLocation.getY());
 					//update the curLocation to the new Point
 					curLocation = new Point(curLocation.west().getX(), curLocation.getY());
-					System.out.println("Go West by 1 point.");
+					//System.out.println("Go West by 1 point.");
 					path.add(newPt);
 				}
 			}
-			if (curLocation.getY() != dest.getY()) {
+			else if (curLocation.getY() != dest.getY()) {
 				int y1Diff = Math.abs(dest.getY() - curLocation.north().getY()); //go north, y + 1
 				int y2Diff = Math.abs(dest.getY() - curLocation.south().getY()); //go south, y - 1
 				if (y1Diff <= y2Diff) {
 					Point newPt = new Point(curLocation.getX(), curLocation.north().getY());
 					//update the curLocation to the new Point
 					curLocation = new Point(curLocation.getX(), curLocation.north().getY());
-					System.out.println("Go North by 1 point.");
+					//System.out.println("Go North by 1 point.");
 					path.add(newPt);
 				}
 				else {
 					Point newPt = new Point(curLocation.getX(), curLocation.south().getY());
 					//update the curLocation to the new Point
 					curLocation = new Point(curLocation.getX(), curLocation.south().getY());
-					System.out.println("Go South by 1 point.");
+					//System.out.println("Go South by 1 point.");
 					path.add(newPt);
 				}
 			}
 		}
+		//System.out.println("LinkedList " + path);
 		return path;
 	}
 	
