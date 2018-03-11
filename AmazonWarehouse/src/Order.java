@@ -13,6 +13,7 @@ import java.util.LinkedList;
  * have to wait because there is a full bin but the Belt has not moved it yet.
  */
 public class Order {
+	private Address addr = new Address();
 	private int random;
 	private Floor floor;
 	private Inventory inventory;
@@ -21,6 +22,10 @@ public class Order {
 	private Robot robot;
 	private boolean order_showup;
 	private Point shelf;
+	public Order() {
+		this.inventory = new Inventory();
+		this.floor = new Floor();
+	}
 	public Order(Inventory inventory, Floor floor) {
 		this.inventory = inventory;
 		this.floor = floor;
@@ -32,7 +37,7 @@ public class Order {
 	 */
 	public int random_number() {
 		random = (int)(Math.random() * 20);
-		System.out.println("random number is " + random);
+		//System.out.println("random number is " + random);
 		return random;
 		
 	}
@@ -40,12 +45,15 @@ public class Order {
 	//use random_number method(above) to produce a ramdom order(below)
 	public void make_Order() {
 		//Item item;
+		System.out.println("=======================================");
 		int rand = random_number();
 		if (random > 10) {
 			order_showup = false;
 			System.out.println("No order comes up yet...");
+			System.out.println("=======================================");
 		}
 		if (rand == 0) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[0];
 			shelf = item.place;
@@ -53,87 +61,134 @@ public class Order {
 			order_queue.add(item);
 			inventory.item_arr[0].Stock--;
 			inventory.stock_Warning();
+			System.out.println("=======================================");
+
 		}
 		else if (rand == 1) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[1];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[1].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 2) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[3];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[3].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 3) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[2];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[2].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 4) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[4];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[4].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 5) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[5];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[5].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 6) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[6];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[6].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 7) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[7];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[7].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 8) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[8];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[8].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 		else if (rand == 9) {
+			System.out.println("=======================================");
 			order_showup = true;
 			item = inventory.item_arr[9];
 			shelf = item.place;
 			System.out.println("Order is on the shelf " + item.place);
 			order_queue.add(item);
 			inventory.item_arr[9].Stock--;
+			System.out.println("The receiver's name is " + addr.get_randname());
+			System.out.println("The state is " + addr.get_randSt());
+			System.out.println("The zip code is " + addr.get_randZip());
 			inventory.stock_Warning();
+			System.out.println("=======================================");
 		}
 	}
 	
@@ -144,6 +199,36 @@ public class Order {
 	}
 	
 	public Point find_Shelf() {
+		System.out.print(this.shelf);
 		return this.shelf;
+	}
+}
+
+/*
+ * This is the class that will produce the random address.
+ * Including name of the person, street, state, zip code.
+ */
+class Address {
+	private String[] name = new String[] {"Ivan", "Link", "Java", "Python", "Haskell", "Prolog", "Agda", "Mips"};
+	private String[] state = new String[] {"IA", "WI", "CA", "AL", "AK", "GA", "KS", "NJ", "NC", "ND"};
+	private String[] zip_code = new String[] {"10086", "52240", "53959", "10010", "10020", "54228", "52910"};
+//	private int random_Name = (int)Math.random() * 8;
+//	private int random_State = (int)Math.random() * 10;
+//	private int random_Zip = (int)Math.random() * 7;
+	
+	public String get_randname() {
+		int random_Name = (int)(Math.random() * 8);
+		System.out.println(random_Name);
+		return name[random_Name];
+	}
+	
+	public String get_randSt() {
+		int random_State = (int)(Math.random() * 10);
+		return state[random_State];
+	}
+	
+	public String get_randZip() {
+		int  random_Zip = (int)(Math.random() * 7);
+		return zip_code[random_Zip];
 	}
 }

@@ -23,14 +23,14 @@ public class Floor {
 	final static int Length = 100;  // related to x coordinate
 	final static int Width = 80;   //related to y coordinate
 	
-	public static final Point Charging_Station = new Point(0, 0);
-	public static final Point Picker = new Point(0, 80);
-	public static final Point Packer = new Point(50,40);
-	public static final Point Belt = new Point(100, 0);
-	public static final Point Shipping_Dock = new Point(100, 40);
-	public static final Point Rcving_Dock = new Point(100, 80);
-	public static final Point Shelf_0 = new Point(20, 60);
-	public static final Point Shelf_1 = new Point(40, 60);
+	private static final Point Charging_Station = new Point(0, 0);
+	private static final Point Picker = new Point(0, 80);
+	private static final Point Packer = new Point(50,40);
+	private static final Point Belt = new Point(100, 0);
+	private static final Point Shipping_Dock = new Point(100, 40);
+	private static final Point Rcving_Dock = new Point(100, 80);
+	private static final Point Shelf_0 = new Point(20, 60);
+	private static final Point Shelf_1 = new Point(40, 60);
 	
 	public Point[] Shelf_arr= new Point[]{Shelf_0, Shelf_1};
 	
@@ -60,9 +60,11 @@ public class Floor {
 		return Belt;
 	}
 	public Point getShipping_Dock() {
+		System.out.println("Order is arrived at shipping dock, and is ready to be shipped...");
 		return Shipping_Dock;
 	}
 	public Point getRcving_Dock() {
+		System.out.println("At receiving dock...");
 		return Rcving_Dock;
 	}
 	public Point getShelf_0() {

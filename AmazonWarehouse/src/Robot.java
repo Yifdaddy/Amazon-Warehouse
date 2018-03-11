@@ -10,14 +10,14 @@ import java.util.LinkedList;
  * not carry a shelf where it would bump into another shelf, but that might be hard to plan for 
  * depending on the Floor layout.
  */
-public class Robot {
+public class Robot extends Thread{
 	private int battery;
-	private Floor floor;
+	private Floor floor = new Floor();;
 	private boolean charged;
 	//Point ori_Place;
 	private boolean isIdle;
 	private Point current;
-	private Order ord; // not implemented yet
+	private Order ord = new Order();
 	Point next;  //the next point where the robot goes to
 	LinkedList<Point> path = new LinkedList<Point>();
 
@@ -41,12 +41,14 @@ public class Robot {
 	
 	public void reCharge() {
 		battery = 1000;
+		charged = true;
+		System.out.println("Arrived at Charging Station...");
 		System.out.println("Recharged, the battery now is " + battery);
 	}
 	
-	public void find_Place(Point curr, Point dest) {
+	public void find_Place() {
 		// recharge
-		if (battery < 100) {
+		if (this.battery < 100) {
 			System.out.println("Robot needs to get charged, the current battert is " + battery);
 			isIdle = false;
 			this.path = floor.getPath(current, floor.getCharging_Station());
@@ -59,6 +61,7 @@ public class Robot {
 			isIdle = false;
 			this.path = floor.getPath(current, ord.find_Shelf());
 			goTo(this.path);
+			this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
 		}
 	}
 	
@@ -74,5 +77,9 @@ public class Robot {
 			System.out.println("Robot is moving to " + next.getX() + next.getY());
 
 		}
+	}
+
+	public void run() {
+		
 	}
 }

@@ -8,18 +8,18 @@ import java.lang.reflect.Array;
  */
 public class Inventory {
 	public Item[] item_arr;
-	Floor floor;
+	Floor floor = new Floor();
 	public Inventory() {
-		item_arr = new Item[] {new Item("Coke", 1, Floor.Shelf_0, 9999),
-					 	new Item("Coffee", 2, Floor.Shelf_0, 8999),
-					 	new Item("Candy", 3, Floor.Shelf_0, 10000),
-					 	new Item("TV", 4, Floor.Shelf_0, 4000),
-					 	new Item("Tea", 5, Floor.Shelf_1, 1243),
-					 	new Item("Microwave", 6, Floor.Shelf_0, 4938),
-					 	new Item("Bread", 7, Floor.Shelf_1, 3958),
-					 	new Item("Vitamin",8, Floor.Shelf_1, 9483),
-					 	new Item("Tissue", 9, Floor.Shelf_0, 9394),
-					 	new Item("MP3", 10, Floor.Shelf_1, 3404)};
+		this.item_arr = new Item[] {new Item("Coke", 1, floor.getShelf_0(), 9999),
+					 	new Item("Coffee", 2, floor.getShelf_0(), 8999),
+					 	new Item("Candy", 3, floor.getShelf_0(), 10000),
+					 	new Item("TV", 4, floor.getShelf_0(), 4000),
+					 	new Item("Tea", 5, floor.getShelf_1(), 1243),
+					 	new Item("Microwave", 6, floor.getShelf_0(), 4938),
+					 	new Item("Bread", 7, floor.getShelf_1(), 3958),
+					 	new Item("Vitamin",8, floor.getShelf_1(), 9483),
+					 	new Item("Tissue", 9, floor.getShelf_0(), 9394),
+					 	new Item("MP3", 10, floor.getShelf_1(), 3404)};
 
 		
 	}
