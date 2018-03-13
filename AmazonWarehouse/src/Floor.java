@@ -26,7 +26,7 @@ public class Floor {
 	private static final Point Charging_Station = new Point(0, 0);
 	private static final Point Picker = new Point(0, 80);
 	private static final Point Packer = new Point(50,40);
-	private static final Point Belt = new Point(100, 0);
+	private static final Point[] Belt = new Point[] {new Point(100, 0), new Point(99, 0), new Point(98,0)};
 	private static final Point Shipping_Dock = new Point(100, 40);
 	private static final Point Rcving_Dock = new Point(100, 80);
 	private static final Point Shelf_0 = new Point(20, 60);
@@ -56,7 +56,7 @@ public class Floor {
 	public Point getPacker() {
 		return Packer;
 	}
-	public Point getBelt() {
+	public Point[] getBelt() {
 		return Belt;
 	}
 	public Point getShipping_Dock() {
@@ -64,7 +64,7 @@ public class Floor {
 		return Shipping_Dock;
 	}
 	public Point getRcving_Dock() {
-		System.out.println("At receiving dock...");
+		//System.out.println("At receiving dock...");
 		return Rcving_Dock;
 	}
 	public Point getShelf_0() {

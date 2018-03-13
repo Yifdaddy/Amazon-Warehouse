@@ -14,10 +14,12 @@ import java.util.LinkedList;
  */
 public class Order {
 	private Address addr = new Address();
-	private int random;
+	private int random; // for generating order;
+	private int random_0; // for generating random shelf;
 	private Floor floor;
 	private Inventory inventory;
 	private Item item;
+	private boolean is_returned;
 	LinkedList<Item> order_queue = new LinkedList<Item>();
 	private Robot robot;
 	private boolean order_showup;
@@ -35,13 +37,25 @@ public class Order {
 	 * (int)(Math.random() * 20) create chances that might not have orders,
 	 * since num is 0-9 inclusive.
 	 */
-	public int random_number() {
-		random = (int)(Math.random() * 20);
+	private int random_number() {
+		this.random = (int)(Math.random() * 20);
 		//System.out.println("random number is " + random);
 		return random;
 		
 	}
-	
+	private int random_returned_num() {
+		this.random_0 = (int)(Math.random());
+		return random_0;
+	}
+	//give a random shelf to put the item
+	public Point random_Shelf() {
+		if (random_returned_num() == 0) {
+			return floor.getShelf_0();
+		}
+		else {
+			return floor.getShelf_1();
+		}
+	}
 	//use random_number method(above) to produce a ramdom order(below)
 	public void make_Order() {
 		//Item item;
@@ -199,9 +213,32 @@ public class Order {
 	}
 	
 	public Point find_Shelf() {
-		System.out.print(this.shelf);
+		System.out.println(this.shelf);
 		return this.shelf;
 	}
+	
+
+	// generate a random number to determine 
+	// whether there is a return
+	public boolean get_is_Returned() {
+		// if random is less than 10, then there will not be a return
+		// else there is a return
+		if (random < 10) {  
+			is_returned = false; 
+			return is_returned;
+		}
+		else {
+			System.out.println("=======================================");
+			System.out.println("Returned order is from " + addr.get_randname() + "， " + addr.get_randSt() + "， " + addr.get_randZip());
+			is_returned = true;
+			System.out.println("=======================================");
+			return is_returned;
+		}
+	}
+	public Point find_Rcvdock() {
+		return floor.getRcving_Dock();
+	}
+	
 }
 
 /*

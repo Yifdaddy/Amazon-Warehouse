@@ -63,12 +63,21 @@ public class Robot extends Thread{
 			this.path = floor.getPath(current, ord.find_Shelf());
 			//System.out.println("Path " + path);
 			//System.out.println("Path size " + path.size());
-
 			goTo(this.path);
 			this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
 			goTo(this.path);
 			System.out.println("Order is shipped!");
 		}
+		else if (ord.get_is_Returned() == true) {
+			System.out.println("There is a returned order...");
+			isIdle = false;
+			this.path = floor.getPath(current, floor.getRcving_Dock());
+			goTo(this.path);
+			System.out.println("Received a returned order...");
+			System.out.println("Putting it back to the shelf" + ord.random_Shelf());
+			this.path = floor.getPath(current, ord.random_Shelf());
+			goTo(this.path);
+			System.out.println("The returned order has been put back...");		}
 	}
 	
 	
