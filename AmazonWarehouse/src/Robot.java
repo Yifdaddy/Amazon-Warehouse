@@ -57,7 +57,7 @@ public class Robot extends Thread{
 			reCharge();
 		}
 		// Order shows up
-		else if (ord.order_Showup() == true) {
+		if (ord.order_Showup() == true) {
 			System.out.println("Order shows up...");
 			isIdle = false;
 			this.path = floor.getPath(current, ord.find_Shelf());
@@ -68,7 +68,7 @@ public class Robot extends Thread{
 			goTo(this.path);
 			System.out.println("Order is shipped!");
 		}
-		else if (ord.get_is_Returned() == true) {
+		if (ord.get_is_Returned() == true) {
 			System.out.println("There is a returned order...");
 			isIdle = false;
 			this.path = floor.getPath(current, floor.getRcving_Dock());

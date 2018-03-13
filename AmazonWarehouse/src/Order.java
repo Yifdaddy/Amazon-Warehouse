@@ -16,6 +16,7 @@ public class Order {
 	private Address addr = new Address();
 	private int random; // for generating order;
 	private int random_0; // for generating random shelf;
+	private int random_1; // for generating random returned order
 	private Floor floor;
 	private Inventory inventory;
 	private Item item;
@@ -223,7 +224,15 @@ public class Order {
 	public boolean get_is_Returned() {
 		// if random is less than 10, then there will not be a return
 		// else there is a return
-		if (random < 10) {  
+		random_1 = (int)(Math.random() * 20);
+		//System.out.println("random_1 is " + random_1);
+
+		if (random_1 < 10) {  
+			System.out.println("=======================================");
+			System.out.println("No returned order received..");
+
+			System.out.println("=======================================");
+
 			is_returned = false; 
 			return is_returned;
 		}
