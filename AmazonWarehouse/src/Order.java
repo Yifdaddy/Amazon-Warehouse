@@ -64,6 +64,7 @@ public class Order {
 			order_showup = false;
 			System.out.println("No order comes up yet...");
 			System.out.println("=======================================");
+			return;
 		}
 		while (queue_size() < limit) {
 			order_showup = true;
@@ -75,6 +76,9 @@ public class Order {
 				System.out.println("Order is on the shelf " + item.place);
 				order_queue.add(item);
 				inventory.item_arr[0].Stock--;
+				System.out.println("The receiver's name is " + addr.get_randname());
+				System.out.println("The state is " + addr.get_randSt());
+				System.out.println("The zip code is " + addr.get_randZip());
 				inventory.stock_Warning();
 				System.out.println("=======================================");
 
@@ -99,7 +103,8 @@ public class Order {
 				item = inventory.item_arr[3];
 				shelf = item.place;
 				System.out.println("Order is on the shelf " + item.place);
-				order_queue.add(item);					inventory.item_arr[3].Stock--;
+				order_queue.add(item);					
+				inventory.item_arr[3].Stock--;
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
 				System.out.println("The zip code is " + addr.get_randZip());

@@ -72,7 +72,15 @@ public class Robot extends Thread{
 				System.out.println("Order is shipped!");
 				ord.order_queue.remove();
 				System.out.println("size of queue is " + ord.order_queue.size());
+				System.out.println("The battery is " + this.battery);
 
+				if (this.battery < 100) {
+					System.out.println("Robot needs to get charged, the current battert is " + battery);
+					isIdle = false;
+					this.path = floor.getPath(current, floor.getCharging_Station());
+					goTo(this.path);
+					reCharge();
+				}
 			}
 		}
 		if (ord.get_is_Returned() == true) {
@@ -84,7 +92,15 @@ public class Robot extends Thread{
 			System.out.println("Putting it back to the shelf" + ord.random_Shelf());
 			this.path = floor.getPath(current, ord.random_Shelf());
 			goTo(this.path);
-			System.out.println("The returned order has been put back...");		
+			System.out.println("The returned order has been put back...");
+			System.out.println("The battery is " + this.battery);
+			if (this.battery < 100) {
+				System.out.println("Robot needs to get charged, the current battert is " + battery);
+				isIdle = false;
+				this.path = floor.getPath(current, floor.getCharging_Station());
+				goTo(this.path);
+				reCharge();
+			}
 			}
 	}
 	
