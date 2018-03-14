@@ -57,16 +57,23 @@ public class Robot extends Thread{
 			reCharge();
 		}
 		// Order shows up
+		//System.out.println("size of queue is " + ord.order_queue.size());
 		if (ord.order_Showup() == true) {
-			System.out.println("Order shows up...");
-			isIdle = false;
-			this.path = floor.getPath(current, ord.find_Shelf());
-			//System.out.println("Path " + path);
-			//System.out.println("Path size " + path.size());
-			goTo(this.path);
-			this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
-			goTo(this.path);
-			System.out.println("Order is shipped!");
+
+			while (ord.queue_size() != 0) {
+				System.out.println("Order shows up...");
+				isIdle = false;
+				this.path = floor.getPath(current, ord.find_Shelf());
+				//System.out.println("Path " + path);
+				//System.out.println("Path size " + path.size());
+				goTo(this.path);
+				this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
+				goTo(this.path);
+				System.out.println("Order is shipped!");
+				ord.order_queue.remove();
+				System.out.println("size of queue is " + ord.order_queue.size());
+
+			}
 		}
 		if (ord.get_is_Returned() == true) {
 			System.out.println("There is a returned order...");
@@ -77,7 +84,8 @@ public class Robot extends Thread{
 			System.out.println("Putting it back to the shelf" + ord.random_Shelf());
 			this.path = floor.getPath(current, ord.random_Shelf());
 			goTo(this.path);
-			System.out.println("The returned order has been put back...");		}
+			System.out.println("The returned order has been put back...");		
+			}
 	}
 	
 	
@@ -89,7 +97,7 @@ public class Robot extends Thread{
 			//System.out.println("i is " + i);
 			this.next = i;
 			this.current = next;
-			System.out.println("Current point is " + "(" + this.current.getX() + ", " + this.current.getY() + ")");
+			//System.out.println("Current point is " + "(" + this.current.getX() + ", " + this.current.getY() + ")");
 			
 			battery_Use();
 			System.out.println("Robot is moving to " + "(" + next.getX() + ", " + next.getY() + ")");
