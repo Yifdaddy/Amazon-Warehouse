@@ -113,6 +113,12 @@ public class Robot extends Thread{
 			//System.out.println("i is " + i);
 			this.next = i;
 			this.current = next;
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			//System.out.println("Current point is " + "(" + this.current.getX() + ", " + this.current.getY() + ")");
 			
 			battery_Use();

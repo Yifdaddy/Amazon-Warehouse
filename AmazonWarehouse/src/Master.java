@@ -8,19 +8,26 @@
  */
 public final class Master {
 	private static Floor fl;
-	private Robot rt;
-	private Order ord;
+	private static Robot rt;
+	private static Order ord;
+	private static Inventory inventory;
 	private static int tick = 10000;
-	public Master(Floor fl, Robot rt, Order ord) {
-		this.fl = fl;
-		this.rt = rt;
-		this.ord = ord;
-	}
+//	public Master(Floor fl, Robot rt, Order ord) {
+//		this.fl = fl;
+//		this.rt = rt;
+//		this.ord = ord;
+//	}
 	
-	//Not implemented yet
+	// main method that integrates all the classes togethoer and run
 	public static void run() {
-		for (int i = 0; i < tick; i++) {
-			
-		}
+		fl = new Floor();
+		inventory = new Inventory();
+		rt = new Robot(fl, 1000, true, true, fl.getCharging_Station());
+		ord = new Order(inventory, fl);
+		//System.out.println(inventory.item_arr);
+		//ord.make_Order();
+		//System.out.println(ord.order_Showup());
+		//System.out.println(ord.find_Shelf());
+		rt.find_Place();
 	}
 }
