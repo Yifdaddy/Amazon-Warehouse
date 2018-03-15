@@ -77,8 +77,13 @@ public class Floor {
 	
 	/*
 	 * A method that can provide the path to a robot.
-	 * The basic idea is to compare the direction between points.
-	 * In the coordinate system, if 
+	 * The basic idea is to compare the absolute difference between points.
+	 * In the coordinate system, x1Diff(int the code) refers to the difference 
+	 * between destination and moving 1 point to the east of current point.
+	 * x2Diff refers to the difference between destination and moving 1 point to 
+	 * the west of current point.
+	 * 
+	 * Determine whether the robot should move to north or south used the same idea as above.
 	 */
 	
 	public LinkedList<Point> getPath(Point curr, Point dest) {

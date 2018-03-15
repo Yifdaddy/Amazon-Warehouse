@@ -47,6 +47,15 @@ public class Robot extends Thread{
 		System.out.println("Recharged, the battery now is " + battery);
 	}
 	
+	/*
+	 * This method will help robot to find the place to go.
+	 * We first check the battrty of the robot to see if it
+	 * needs to be charged or no; The next step is to check 
+	 * the order queue, if there is any order in the order queue, 
+	 * the robot will finish its job and empty the queue. Otherwise
+	 * if there is a returned order, the robot will go pick up the 
+	 * returned order and put it back to the shelf.
+	 */
 	public void find_Place() {
 		// recharge
 		if (this.battery < 100) {
@@ -59,7 +68,7 @@ public class Robot extends Thread{
 		// Order shows up
 		//System.out.println("size of queue is " + ord.order_queue.size());
 		if (ord.order_Showup() == true) {
-
+			
 			while (ord.queue_size() != 0) {
 				System.out.println("Order shows up...");
 				isIdle = false;
@@ -105,7 +114,10 @@ public class Robot extends Thread{
 	}
 	
 	
-	// point next is popped out of the path, so the we update current to next to show the robot is moving.
+	/*
+	 *  point next is popped out of the path, so that we update 
+	 *  current to next point to show the path that robot is moving.
+	 */
 	public void goTo(LinkedList<Point> path) {
 		for (Point i : path) {
 			//System.out.println("Path " + path);
