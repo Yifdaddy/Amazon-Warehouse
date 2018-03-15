@@ -17,7 +17,7 @@ import java.util.LinkedList;
 
 /*
  * The logic of the coordinates this warehouse is quiet similar to Coordinate System of First Quadrant, 
- * not like what we always used.
+ * not like what we always used in Java.
  */
 public class Floor {
 	final static int Length = 100;  // related to x coordinate
@@ -75,7 +75,12 @@ public class Floor {
 	}
 	
 	
-	//A method that can provide the path to a robot.
+	/*
+	 * A method that can provide the path to a robot.
+	 * The basic idea is to compare the direction between points.
+	 * In the coordinate system, if 
+	 */
+	
 	public LinkedList<Point> getPath(Point curr, Point dest) {
 		LinkedList<Point> path = new LinkedList<Point>();
 		Point curLocation = new Point(curr.getX(), curr.getY());
@@ -87,7 +92,7 @@ public class Floor {
 				if (x1Diff <= x2Diff) {
 					Point newPt = new Point(curLocation.east().getX(), curLocation.getY());
 					//update the curLocation to the new Point
-					curLocation = new Point(curLocation.east().getX(), curLocation.getY());
+					curLocation = newPt;
 					//System.out.println("Go East by 1 point.");
 					path.add(newPt);
 				}
@@ -95,7 +100,7 @@ public class Floor {
 				else {
 					Point newPt = new Point(curLocation.west().getX(), curLocation.getY());
 					//update the curLocation to the new Point
-					curLocation = new Point(curLocation.west().getX(), curLocation.getY());
+					curLocation = newPt;
 					//System.out.println("Go West by 1 point.");
 					path.add(newPt);
 				}
@@ -106,14 +111,14 @@ public class Floor {
 				if (y1Diff <= y2Diff) {
 					Point newPt = new Point(curLocation.getX(), curLocation.north().getY());
 					//update the curLocation to the new Point
-					curLocation = new Point(curLocation.getX(), curLocation.north().getY());
+					curLocation = newPt;
 					//System.out.println("Go North by 1 point.");
 					path.add(newPt);
 				}
 				else {
 					Point newPt = new Point(curLocation.getX(), curLocation.south().getY());
 					//update the curLocation to the new Point
-					curLocation = new Point(curLocation.getX(), curLocation.south().getY());
+					curLocation = newPt;
 					//System.out.println("Go South by 1 point.");
 					path.add(newPt);
 				}

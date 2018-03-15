@@ -26,9 +26,9 @@ public class Inventory {
 	//Check if stock is lower than 500, if it is, restock.
 	public void stock_Warning() {
 		for (Item i : item_arr) {
-			if (i.Stock < 500) {
-				System.out.println("Need to Restock This Item " + i.name);
-				i.Stock += 1000;
+			if (i.stock_Count(i.getName()) < 500) {
+				System.out.println("Need to Restock This Item " + i.getName());
+				i.setStock(1000);;
 				System.out.println("Restock complete!" );
 			}
 		}
