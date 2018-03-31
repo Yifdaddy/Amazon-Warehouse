@@ -20,8 +20,9 @@ public class Robot extends Thread{
 	private Order ord = new Order();
 	Point next;  //the next point where the robot goes to
 	LinkedList<Point> path = new LinkedList<Point>();
-
-	public Robot(Floor floor, int battery, boolean charged, boolean isIdle, Point current) {
+	private String name;
+	public Robot(String name, Floor floor, int battery, boolean charged, boolean isIdle, Point current) {
+		this.name = name;
 		this.floor = floor;
 		this.battery = battery;
 		this.charged = charged;
@@ -43,8 +44,11 @@ public class Robot extends Thread{
 		battery = 1000;
 		charged = true;
 		isIdle = true;
-		System.out.println("Arrived at Charging Station...");
-		System.out.println("Recharged, the battery now is " + battery);
+		System.out.println(this + " Arrived at Charging Station...");
+		System.out.println(this + " Recharged, the battery now is " + battery);
+	}
+	public String get_Name() {
+		return name;
 	}
 	
 	/*
@@ -59,7 +63,7 @@ public class Robot extends Thread{
 	public void find_Place() {
 		// recharge
 		if (this.battery < 100) {
-			System.out.println("Robot needs to get charged, the current battert is " + battery);
+			System.out.println(this.name + " needs to get charged, the current battert is " + battery);
 			isIdle = false;
 			this.path = floor.getPath(current, floor.getCharging_Station());
 			goTo(this.path);
@@ -79,12 +83,12 @@ public class Robot extends Thread{
 				this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
 				goTo(this.path);
 				System.out.println("Order is shipped!");
-				ord.order_queue.remove();
-				System.out.println("size of queue is " + ord.order_queue.size());
+				ord.getOrderqueue().remove();
+				System.out.println("size of queue is " + ord.getOrderqueue().size());
 				System.out.println("The battery is " + this.battery);
 
 				if (this.battery < 100) {
-					System.out.println("Robot needs to get charged, the current battert is " + battery);
+					System.out.println(this.name + " needs to get charged, the current battert is " + battery);
 					isIdle = false;
 					this.path = floor.getPath(current, floor.getCharging_Station());
 					goTo(this.path);
@@ -104,7 +108,7 @@ public class Robot extends Thread{
 			System.out.println("The returned order has been put back...");
 			System.out.println("The battery is " + this.battery);
 			if (this.battery < 100) {
-				System.out.println("Robot needs to get charged, the current battert is " + battery);
+				System.out.println(this.name + " needs to get charged, the current battert is " + battery);
 				isIdle = false;
 				this.path = floor.getPath(current, floor.getCharging_Station());
 				goTo(this.path);
@@ -126,7 +130,7 @@ public class Robot extends Thread{
 			this.next = i;
 			this.current = next;
 			try {
-				Thread.sleep(500);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -134,11 +138,11 @@ public class Robot extends Thread{
 			//System.out.println("Current point is " + "(" + this.current.getX() + ", " + this.current.getY() + ")");
 			
 			battery_Use();
-			System.out.println("Robot is moving to " + "(" + next.getX() + ", " + next.getY() + ")");
+			System.out.println(this.name + " is moving to " + "(" + next.getX() + ", " + next.getY() + ")");
 		}
 	}
 
 	public void run() {
-		
+		find_Place();
 	}
 }

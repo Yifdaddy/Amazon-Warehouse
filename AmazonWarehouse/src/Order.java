@@ -19,7 +19,7 @@ public class Order {
 	private Inventory inventory;
 	private Item item;
 	private boolean is_returned;
-	LinkedList<Item> order_queue = new LinkedList<Item>();
+	private LinkedList<Item> order_queue = new LinkedList<Item>();
 	private Robot robot;
 	private boolean order_showup;
 	private Point shelf;
@@ -55,6 +55,10 @@ public class Order {
 			return floor.getShelf_1();
 		}
 	}
+	
+	public LinkedList<Item> getOrderqueue() {
+		return order_queue;
+	}
 	//use random_number method(above) to produce a ramdom order(below)
 	public void make_Order() {
 		//Item item;
@@ -75,6 +79,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[0].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -90,6 +95,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[1].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -103,7 +109,8 @@ public class Order {
 				item = inventory.item_arr[3];
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
-				order_queue.add(item);					
+				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[3].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -118,6 +125,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[2].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -132,6 +140,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[4].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -146,6 +155,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[5].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -160,6 +170,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);	
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[6].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -174,6 +185,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[7].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -188,6 +200,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[8].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
@@ -202,6 +215,7 @@ public class Order {
 				shelf = item.getPlace();
 				System.out.println("Order is on the shelf " + item.getPlace());
 				order_queue.add(item);
+				System.out.println("Order added into Order queue...");
 				inventory.item_arr[9].minusOneStock();
 				System.out.println("The receiver's name is " + addr.get_randname());
 				System.out.println("The state is " + addr.get_randSt());
