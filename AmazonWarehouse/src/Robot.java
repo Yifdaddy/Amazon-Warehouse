@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * not carry a shelf where it would bump into another shelf, but that might be hard to plan for 
  * depending on the Floor layout.
  */
-public class Robot extends Thread{
+public class Robot implements Runnable {
 	private int battery;
 	private Floor floor = new Floor();
 	private boolean charged;
@@ -20,9 +20,7 @@ public class Robot extends Thread{
 	private Order ord = new Order();
 	Point next;  //the next point where the robot goes to
 	LinkedList<Point> path = new LinkedList<Point>();
-	private String name;
-	public Robot(String name, Floor floor, int battery, boolean charged, boolean isIdle, Point current) {
-		this.name = name;
+	public Robot(Floor floor, int battery, boolean charged, boolean isIdle, Point current) {
 		this.floor = floor;
 		this.battery = battery;
 		this.charged = charged;
@@ -44,12 +42,10 @@ public class Robot extends Thread{
 		battery = 1000;
 		charged = true;
 		isIdle = true;
-		System.out.println(this + " Arrived at Charging Station...");
-		System.out.println(this + " Recharged, the battery now is " + battery);
+		System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station...");
+		System.out.println(Thread.currentThread().getName() + " Recharged, the battery now is " + battery);
 	}
-	public String get_Name() {
-		return name;
-	}
+	
 	
 	/*
 	 * This method will help robot to find the place to go.
@@ -63,7 +59,7 @@ public class Robot extends Thread{
 	public void find_Place() {
 		// recharge
 		if (this.battery < 100) {
-			System.out.println(this.name + " needs to get charged, the current battert is " + battery);
+			System.out.println(Thread.currentThread().getName() + " needs to get charged, the current battert is " + battery);
 			isIdle = false;
 			this.path = floor.getPath(current, floor.getCharging_Station());
 			goTo(this.path);
@@ -74,6 +70,8 @@ public class Robot extends Thread{
 		if (ord.order_Showup() == true) {
 			
 			while (ord.queue_size() != 0) {
+				System.out.println("Order_queue size is " + ord.queue_size());
+
 				System.out.println("Order shows up...");
 				isIdle = false;
 				this.path = floor.getPath(current, ord.find_Shelf());
@@ -85,10 +83,10 @@ public class Robot extends Thread{
 				System.out.println("Order is shipped!");
 				ord.getOrderqueue().remove();
 				System.out.println("size of queue is " + ord.getOrderqueue().size());
-				System.out.println("The battery is " + this.battery);
+				System.out.println("The battery for " + Thread.currentThread().getName() + " is " + this.battery);
 
 				if (this.battery < 100) {
-					System.out.println(this.name + " needs to get charged, the current battert is " + battery);
+					System.out.println(Thread.currentThread().getName() + " needs to get charged, the current battert is " + battery);
 					isIdle = false;
 					this.path = floor.getPath(current, floor.getCharging_Station());
 					goTo(this.path);
@@ -106,9 +104,9 @@ public class Robot extends Thread{
 			this.path = floor.getPath(current, ord.random_Shelf());
 			goTo(this.path);
 			System.out.println("The returned order has been put back...");
-			System.out.println("The battery is " + this.battery);
+			System.out.println("The battery for " + Thread.currentThread().getName() + " is " + this.battery);
 			if (this.battery < 100) {
-				System.out.println(this.name + " needs to get charged, the current battert is " + battery);
+				System.out.println(Thread.currentThread().getName() + " needs to get charged, the current battert is " + battery);
 				isIdle = false;
 				this.path = floor.getPath(current, floor.getCharging_Station());
 				goTo(this.path);
@@ -130,7 +128,7 @@ public class Robot extends Thread{
 			this.next = i;
 			this.current = next;
 			try {
-				Thread.sleep(100);
+				Thread.sleep(0);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -138,11 +136,15 @@ public class Robot extends Thread{
 			//System.out.println("Current point is " + "(" + this.current.getX() + ", " + this.current.getY() + ")");
 			
 			battery_Use();
-			System.out.println(this.name + " is moving to " + "(" + next.getX() + ", " + next.getY() + ")");
+			System.out.println(Thread.currentThread().getName() + " is moving to " + "(" + next.getX() + ", " + next.getY() + ")");
 		}
 	}
-
 	public void run() {
+		synchronized(this) {
 		find_Place();
+		}
+		
 	}
+
+	
 }

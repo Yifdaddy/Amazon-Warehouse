@@ -24,18 +24,23 @@ public final class Master {
 	public static void run() {
 		fl = new Floor();
 		inventory = new Inventory();
-		rt1 = new Robot("Robot1",fl, 1000, true, true, fl.getCharging_Station());
-		rt2 = new Robot("Robot2",fl, 1000, true, true, fl.getCharging_Station());
-		ord = new Order(inventory, fl);
+		rt1 = new Robot(fl, 1000, true, true, fl.getCharging_Station());
+		rt2 = new Robot(fl, 1000, true, true, fl.getCharging_Station());
 		ArrayList<Robot> robot_arr = new ArrayList<Robot>();
 		robot_arr.add(rt1);
 		robot_arr.add(rt2);
+		Thread thread1 = new Thread(rt1, "Robot1");
+		Thread thread2 = new Thread(rt2, "Robot2");
+		thread1.start();
+		thread2.start();
 		//System.out.println(inventory.item_arr);
 		//ord.make_Order();
 		//System.out.println(ord.order_Showup());
 		//System.out.println(ord.find_Shelf());
-		rt1.start();
-		rt2.start();
+		
+		//rt2.find_Place();
+		//System.out.println("Order queue in master is " + ord.getOrderqueue());
+		
 		
 	}
 }
