@@ -33,13 +33,7 @@ public final class Master {
 		Thread thread2 = new Thread(rt2, "Robot2");
 		thread1.start();
 		thread2.start();
-		//System.out.println(inventory.item_arr);
-		//ord.make_Order();
-		//System.out.println(ord.order_Showup());
-		//System.out.println(ord.find_Shelf());
 		
-		//rt2.find_Place();
-		//System.out.println("Order queue in master is " + ord.getOrderqueue());
 		
 		
 	}

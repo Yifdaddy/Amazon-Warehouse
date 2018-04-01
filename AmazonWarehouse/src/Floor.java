@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-
+/*
+ * @author Yifan He
+ */
 /*
  * this class is in charge of representing the static layout of the simulated warehouse. 
  * The warehouse is a grid of squares with some squares having special purposes. These are 

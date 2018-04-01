@@ -1,4 +1,6 @@
-
+/*
+ * @author Yifan He
+ */
 public class Shelf {
 	Point home_Shelf;
 	Boolean being_Carried;

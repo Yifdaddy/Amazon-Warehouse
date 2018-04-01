@@ -1,9 +1,12 @@
-
+/*
+ * @author Yifan He
+ */
 /*
  * Item class will provide the basic information of each item,
  * such as name, number, where it is(Which shelf it is on), 
  * and stock of the item.
  */
+
 public class Item {
 	private int num;
 	private String name;

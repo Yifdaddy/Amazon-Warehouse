@@ -10,6 +10,9 @@ import java.util.LinkedList;
  * not carry a shelf where it would bump into another shelf, but that might be hard to plan for 
  * depending on the Floor layout.
  */
+/*
+ * @author Yifan He
+ */
 public class Robot implements Runnable {
 	private int battery;
 	private Floor floor = new Floor();
@@ -128,12 +131,11 @@ public class Robot implements Runnable {
 			this.next = i;
 			this.current = next;
 			try {
-				Thread.sleep(0);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//System.out.println("Current point is " + "(" + this.current.getX() + ", " + this.current.getY() + ")");
 			
 			battery_Use();
 			System.out.println(Thread.currentThread().getName() + " is moving to " + "(" + next.getX() + ", " + next.getY() + ")");

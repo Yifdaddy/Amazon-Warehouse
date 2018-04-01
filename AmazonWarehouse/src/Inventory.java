@@ -6,6 +6,9 @@ import java.lang.reflect.Array;
  * on the Shelf objects (it can ask Floor for a list of all Shelf objects).  If stock 
  * gets low, Inventory should cause a later arrival of new items to the receiving dock.
  */
+/*
+ * @author Yifan He
+ */
 public class Inventory {
 	public Item[] item_arr;
 	Floor floor = new Floor();

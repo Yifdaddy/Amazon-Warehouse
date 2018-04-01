@@ -1,4 +1,6 @@
-
+/*
+ * @author Yifan He
+ */
 /*
  * This gives the coordinates of each place. 
  * Basically print out the layout of floor
