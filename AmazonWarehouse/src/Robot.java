@@ -1,5 +1,7 @@
 import java.util.LinkedList;
-
+/*
+ * @author Yifan He
+ */
 /*
  * has the most intuitive task, charging, moving, carrying shelf. Robot needs to keep 
  * track of location, tell Floor at each tick where it is, call Floor to find a path, 
@@ -10,9 +12,7 @@ import java.util.LinkedList;
  * not carry a shelf where it would bump into another shelf, but that might be hard to plan for 
  * depending on the Floor layout.
  */
-/*
- * @author Yifan He
- */
+
 public class Robot implements Runnable {
 	private int battery;
 	private Floor floor = new Floor();

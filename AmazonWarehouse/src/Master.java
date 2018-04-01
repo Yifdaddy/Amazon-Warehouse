@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/*
+ * @author Yifan He
+ */
 /*
  * this is the main class, which drives the simulation by 
  * (1) creating initialial instances of all other parts, 
