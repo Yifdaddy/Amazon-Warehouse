@@ -26,8 +26,8 @@ public final class Master {
 	public static void run() {
 		fl = new Floor();
 		inventory = new Inventory();
-		rt1 = new Robot(fl, 1000, true, true, fl.getCharging_Station());
-		rt2 = new Robot(fl, 1000, true, true, fl.getCharging_Station());
+		rt1 = new Robot(fl, 200, true, true, fl.getCharging_Station());
+		rt2 = new Robot(fl, 200, true, true, fl.getCharging_Station());
 		ArrayList<Robot> robot_arr = new ArrayList<Robot>();
 		robot_arr.add(rt1);
 		robot_arr.add(rt2);

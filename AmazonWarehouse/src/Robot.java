@@ -45,8 +45,29 @@ public class Robot implements Runnable {
 		battery = 1000;
 		charged = true;
 		isIdle = true;
-		System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station...");
-		System.out.println(Thread.currentThread().getName() + " Recharged, the battery now is " + battery);
+		if (floor.get_isAtChargingStation() == true) {
+			System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station...");
+			try {
+				System.out.println("Recharging...");
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(Thread.currentThread().getName() + " Recharged, the battery now is " + battery);
+
+		} else if (floor.get_isAtChargingStation() == false){
+			//floor.set_isAtChargingStation(true);
+			System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station 1...");
+			try {
+				System.out.println("Recharging...");
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(Thread.currentThread().getName() + " Recharged, the battery now is " + battery);
+		}
 	}
 	
 	
@@ -62,11 +83,24 @@ public class Robot implements Runnable {
 	public void find_Place() {
 		// recharge
 		if (this.battery < 100) {
+			if (this.battery < 0) {
+				System.out.println("Activating the backup power...");
+				this.battery = Math.abs(this.battery);
+				System.out.println("After activated the backup power for " + Thread.currentThread().getName() + ", now the battery is " + this.battery);
+			}
 			System.out.println(Thread.currentThread().getName() + " needs to get charged, the current battert is " + battery);
 			isIdle = false;
-			this.path = floor.getPath(current, floor.getCharging_Station());
-			goTo(this.path);
-			reCharge();
+			if (floor.get_isAtChargingStation() == true) {
+				this.path = floor.getPath(current, floor.getCharging_Station_1());
+				goTo(this.path);
+				reCharge();
+			} else {
+				floor.set_isAtChargingStation(true);
+				this.path = floor.getPath(current, floor.getCharging_Station());
+				goTo(this.path);
+				reCharge();
+				floor.set_isAtChargingStation(false);
+			}
 		}
 		// Order shows up
 		//System.out.println("size of queue is " + ord.order_queue.size());
@@ -89,11 +123,25 @@ public class Robot implements Runnable {
 				System.out.println("The battery for " + Thread.currentThread().getName() + " is " + this.battery);
 
 				if (this.battery < 100) {
+					if (this.battery < 0) {
+						System.out.println("Activating the backup power...");
+						this.battery = Math.abs(this.battery);
+						System.out.println("After activated the backup power for " + Thread.currentThread().getName() + ", now the battery is " + this.battery);
+					}
 					System.out.println(Thread.currentThread().getName() + " needs to get charged, the current battert is " + battery);
 					isIdle = false;
-					this.path = floor.getPath(current, floor.getCharging_Station());
-					goTo(this.path);
-					reCharge();
+					if (floor.get_isAtChargingStation() == true) {
+						this.path = floor.getPath(current, floor.getCharging_Station_1());
+						goTo(this.path);
+						reCharge();
+					}
+					else {
+						floor.set_isAtChargingStation(true);
+						this.path = floor.getPath(current, floor.getCharging_Station());
+						goTo(this.path);
+						reCharge();
+						floor.set_isAtChargingStation(false);
+					}
 				}
 			}
 		}
@@ -109,11 +157,25 @@ public class Robot implements Runnable {
 			System.out.println("The returned order has been put back...");
 			System.out.println("The battery for " + Thread.currentThread().getName() + " is " + this.battery);
 			if (this.battery < 100) {
+				if (this.battery < 0) {
+					System.out.println("Activating the backup power...");
+					this.battery = Math.abs(this.battery);
+					System.out.println("After activated the backup power for " + Thread.currentThread().getName() + ", now the battery is " + this.battery);
+				}
 				System.out.println(Thread.currentThread().getName() + " needs to get charged, the current battert is " + battery);
 				isIdle = false;
-				this.path = floor.getPath(current, floor.getCharging_Station());
-				goTo(this.path);
-				reCharge();
+				if (floor.get_isAtChargingStation() == true) {
+					this.path = floor.getPath(current, floor.getCharging_Station_1());
+					goTo(this.path);
+					reCharge();
+				}
+				else {
+					floor.set_isAtChargingStation(true);
+					this.path = floor.getPath(current, floor.getCharging_Station());
+					goTo(this.path);
+					reCharge();
+					floor.set_isAtChargingStation(false);
+				}
 			}
 			}
 	}
@@ -131,7 +193,7 @@ public class Robot implements Runnable {
 			this.next = i;
 			this.current = next;
 			try {
-				Thread.sleep(50);
+				Thread.sleep(30);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
