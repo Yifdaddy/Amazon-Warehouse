@@ -35,6 +35,7 @@ public class Floor {
 	private static final Point Shelf_0 = new Point(20, 60);
 	private static final Point Shelf_1 = new Point(40, 60);
 	private static boolean isAtChargingStation;
+	private static boolean isAtChargingStation_1;
 	public Point[] Shelf_arr= new Point[]{Shelf_0, Shelf_1};
 	
 	//cell stores place and its location
@@ -65,6 +66,8 @@ public class Floor {
 	public boolean get_isAtChargingStation() {
 		return isAtChargingStation;
 	}
+	
+	
 	
 	public Point getPicker() {
 		return Picker;
