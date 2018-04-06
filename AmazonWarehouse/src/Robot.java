@@ -122,10 +122,11 @@ public class Robot implements Runnable {
 				this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
 				goTo(this.path);
 				/*
-				 * belt
+				 *  need to new Thread(belt) is because Thread can only call start() once,
+				 *  if we need to call start() more than one time, we need to new Thread(xx).start()
 				 */
-				belt.Shipped();
-				//threadBelt.start();
+				//belt.Shipped();
+				new Thread(belt).start();
 				System.out.println("Order is shipped!");
 				ord.getOrderqueue().remove();
 				System.out.println("size of queue is " + ord.getOrderqueue().size());
@@ -162,9 +163,9 @@ public class Robot implements Runnable {
 			/*
 			 * Belt
 			 */
-			//threadBelt.start();
+			threadBelt.start();
 			
-			belt.Rcvd();
+			//belt.Rcvd();
 			System.out.println("Received a returned order...");
 			System.out.println("Putting it back to the shelf" + ord.random_Shelf());
 			this.path = floor.getPath(current, ord.random_Shelf());
@@ -208,7 +209,7 @@ public class Robot implements Runnable {
 			this.next = i;
 			this.current = next;
 			try {
-				Thread.sleep(50);
+				Thread.sleep(0);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

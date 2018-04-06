@@ -28,10 +28,10 @@ public class Belt implements Runnable{
 	
 	public void Shipped() {
 		//if (this.order.order_Showup() == true) {
-			for (int i = 40; i > 0; i--) {
+			for (int i = 0; i < 41; i++) {
 				System.out.println("Belt area is moving the shipping order to Point" + "(" +	BeltArea.get(i).getX() + "," + BeltArea.get(i).getY() + ")");
-				System.out.println("The order is going through thr Belt...");
-				if (BeltArea.get(i).getY() == 1) {
+				//System.out.println("The order is going through thr Belt...");
+				if (BeltArea.get(i).getY() == 40) {
 					System.out.println("Ready to ship the Order...");
 				}
 			
@@ -42,12 +42,13 @@ public class Belt implements Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		if (order.get_is_Returned() == true) {
-			Rcvd();
-		} else {
-			Shipped();
+		synchronized(this) {
+			if (order.get_is_Returned() == true) {
+				Rcvd();
+			} else {
+				Shipped();
+			}
 		}
 	}
-	
 }
 
