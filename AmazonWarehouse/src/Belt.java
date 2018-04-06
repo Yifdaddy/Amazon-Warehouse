@@ -29,8 +29,8 @@ public class Belt implements Runnable{
 	public void Shipped() {
 		//if (this.order.order_Showup() == true) {
 			for (int i = 40; i > 0; i--) {
-				//System.out.println("Belt area is moving the shipping order to Point" + "(" +	BeltArea.get(i).getX() + "," + BeltArea.get(i).getY() + ")");
-				//System.out.println("The order is going through thr Belt...");
+				System.out.println("Belt area is moving the shipping order to Point" + "(" +	BeltArea.get(i).getX() + "," + BeltArea.get(i).getY() + ")");
+				System.out.println("The order is going through thr Belt...");
 				if (BeltArea.get(i).getY() == 1) {
 					System.out.println("Ready to ship the Order...");
 				}

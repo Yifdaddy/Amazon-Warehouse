@@ -51,7 +51,7 @@ public class Robot implements Runnable {
 			System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station...");
 			try {
 				System.out.println("Recharging...");
-				Thread.sleep(000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -64,7 +64,7 @@ public class Robot implements Runnable {
 			System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station...");
 			try {
 				System.out.println("Recharging...");
-				Thread.sleep(000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -124,7 +124,7 @@ public class Robot implements Runnable {
 				/*
 				 * belt
 				 */
-				//belt.Shipped();
+				belt.Shipped();
 				//threadBelt.start();
 				System.out.println("Order is shipped!");
 				ord.getOrderqueue().remove();
@@ -162,8 +162,9 @@ public class Robot implements Runnable {
 			/*
 			 * Belt
 			 */
-			threadBelt.start();
-			//belt.Rcvd();
+			//threadBelt.start();
+			
+			belt.Rcvd();
 			System.out.println("Received a returned order...");
 			System.out.println("Putting it back to the shelf" + ord.random_Shelf());
 			this.path = floor.getPath(current, ord.random_Shelf());
@@ -207,7 +208,7 @@ public class Robot implements Runnable {
 			this.next = i;
 			this.current = next;
 			try {
-				Thread.sleep(0);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
