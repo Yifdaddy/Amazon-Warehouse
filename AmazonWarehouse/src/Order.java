@@ -44,7 +44,7 @@ public class Order {
 	 * since num is 0-9 inclusive.
 	 */
 	private int random_number() {
-		this.random = (int)(Math.random() * 20);
+		this.random = (int)(Math.random() * 15);
 		//System.out.println("random number is " + random);
 		return random;
 		

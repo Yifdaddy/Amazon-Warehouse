@@ -29,13 +29,12 @@ public class Floor {
 	private static final Point Charging_Station_1 = new Point(0,20);
 	private static final Point Picker = new Point(0, 80);
 	private static final Point Packer = new Point(50,40);
-	private static final Point[] Belt = new Point[] {new Point(100, 0), new Point(99, 0), new Point(98,0)};
-	private static final Point Shipping_Dock = new Point(100, 40);
-	private static final Point Rcving_Dock = new Point(100, 80);
+	//private static final Point[] Belt = new Point[] {	};
+	private static final Point Shipping_Dock = new Point(99, 0);
+	private static final Point Rcving_Dock = new Point(99, 80);
 	private static final Point Shelf_0 = new Point(20, 60);
 	private static final Point Shelf_1 = new Point(40, 60);
 	private static boolean isAtChargingStation;
-	private static boolean isAtChargingStation_1;
 	public Point[] Shelf_arr= new Point[]{Shelf_0, Shelf_1};
 	
 	//cell stores place and its location
@@ -77,9 +76,9 @@ public class Floor {
 		return Packer;
 	}
 	
-	public Point[] getBelt() {
-		return Belt;
-	}
+	//public Point[] getBelt() {
+	//	return Belt;
+	//}
 	
 	public Point getShipping_Dock() {
 		System.out.println("Order is arrived at shipping dock, and is ready to be shipped...");

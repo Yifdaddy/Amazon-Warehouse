@@ -15,6 +15,8 @@ import java.util.LinkedList;
 
 public class Robot implements Runnable {
 	private int battery;
+	private Belt belt = new Belt();
+	private Thread threadBelt = new Thread(belt);
 	private Floor floor = new Floor();
 	private boolean charged;
 	//Point ori_Place;
@@ -49,7 +51,7 @@ public class Robot implements Runnable {
 			System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station...");
 			try {
 				System.out.println("Recharging...");
-				Thread.sleep(3000);
+				Thread.sleep(000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -62,7 +64,7 @@ public class Robot implements Runnable {
 			System.out.println(Thread.currentThread().getName() + " Arrived at Charging Station...");
 			try {
 				System.out.println("Recharging...");
-				Thread.sleep(3000);
+				Thread.sleep(000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -119,6 +121,11 @@ public class Robot implements Runnable {
 				goTo(this.path);
 				this.path = floor.getPath(ord.find_Shelf(), floor.getShipping_Dock());
 				goTo(this.path);
+				/*
+				 * belt
+				 */
+				//belt.Shipped();
+				//threadBelt.start();
 				System.out.println("Order is shipped!");
 				ord.getOrderqueue().remove();
 				System.out.println("size of queue is " + ord.getOrderqueue().size());
@@ -152,6 +159,11 @@ public class Robot implements Runnable {
 			isIdle = false;
 			this.path = floor.getPath(current, floor.getRcving_Dock());
 			goTo(this.path);
+			/*
+			 * Belt
+			 */
+			threadBelt.start();
+			//belt.Rcvd();
 			System.out.println("Received a returned order...");
 			System.out.println("Putting it back to the shelf" + ord.random_Shelf());
 			this.path = floor.getPath(current, ord.random_Shelf());
@@ -195,7 +207,7 @@ public class Robot implements Runnable {
 			this.next = i;
 			this.current = next;
 			try {
-				Thread.sleep(30);
+				Thread.sleep(0);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
