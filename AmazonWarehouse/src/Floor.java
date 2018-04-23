@@ -81,7 +81,7 @@ public class Floor {
 	//}
 	
 	public Point getShipping_Dock() {
-		System.out.println("Order is arrived at shipping dock, and is ready to be shipped...");
+		//System.out.println("Order is arrived at shipping dock, and is ready to be shipped...");
 		return Shipping_Dock;
 	}
 	public Point getRcving_Dock() {

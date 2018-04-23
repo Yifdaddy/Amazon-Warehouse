@@ -23,8 +23,8 @@ public class Robot implements Runnable {
 	private boolean isIdle;
 	private Point current;
 	private Order ord = new Order();
-	Point next;  //the next point where the robot goes to
-	LinkedList<Point> path = new LinkedList<Point>();
+	private Point next;  //the next point where the robot goes to
+	private LinkedList<Point> path = new LinkedList<Point>();
 	public Robot(Floor floor, int battery, boolean charged, boolean isIdle, Point current) {
 		this.floor = floor;
 		this.battery = battery;
@@ -44,7 +44,7 @@ public class Robot implements Runnable {
 	}
 	
 	public void reCharge() {
-		battery = 500;
+		battery = 1000;
 		charged = true;
 		isIdle = true;
 		if (floor.get_isAtChargingStation() == true) {
